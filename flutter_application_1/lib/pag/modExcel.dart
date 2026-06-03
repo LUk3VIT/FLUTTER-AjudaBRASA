@@ -1,33 +1,17 @@
-import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/cabecalho.dart';
 import 'package:flutter_application_1/widget/custom_sidebar_button.dart';
+import 'package:flutter_application_1/widget/button.dart';
+import 'modExcel-layout/limparHTML-layout.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ModExcel extends StatefulWidget {
+  const ModExcel({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.home,
-      routes: Routes.getRoutes(),
-    );
-  }
+  State<ModExcel> createState() => _ModExcelState();
 }
 
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
-
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
+class _ModExcelState extends State<ModExcel> {
   bool _isCollapsed = false;
 
  @override
@@ -92,18 +76,17 @@ class _MainAppState extends State<MainApp> {
 
                   CustomSidebarButton(
                     titulo: 'Modificação Excel',
-                    icon: Icons.settings, 
+                    icon: Icons.settings,
                     isCollapsed: _isCollapsed,
-                    onTap: () {
-                      Navigator.pushReplacementNamed(context, Routes.modExcel);
-                    },
+                    isActive: true,
+                    onTap: () {},
                   ),
 
                   const SizedBox(height: 10),
 
                   CustomSidebarButton(
                     titulo: 'Equipamentos',
-                    icon: Icons.table_chart, 
+                    icon: Icons.table_chart,
                     isCollapsed: _isCollapsed,
                     onTap: () {},
                   ),
@@ -130,32 +113,72 @@ class _MainAppState extends State<MainApp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Cabecalho(nome: 'Lucas Dias'),
+
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.all(10),
                         color: const Color(0xFFEAE8D2),
-                        child: const Center(
+                        child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('Bem Vindo!', style: TextStyle(fontSize: 20)),
-                              SizedBox(height: 20),
-                              Text(
-                                'AJUDA BRASA - LUCAS DIAS',
-                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                              const Text(
+                                'Tela de Modificação Excel',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                ),
                               ),
-                            ]
+
+                              const Text(
+                                'Escolha uma das opções abaixo',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              
+                              const SizedBox(height: 20),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+
+                                  Button(
+                                    titulo: 'Limpar HTML',
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => const ModExcelLayout(),
+                                      );
+                                    },
+                                  ),
+
+                                  const SizedBox(width: 20),
+
+                                  Button(
+                                    titulo: 'Unir Planilhas',
+                                  ),
+                                ],
+                              )
+
+
+                            ],
                           )
                         )
                       )
                     )
+
                   ],
                 ),
               )
             ) 
-          ]
-        )
-      );
+          ],
+        ),
+    );  
   }
 }
