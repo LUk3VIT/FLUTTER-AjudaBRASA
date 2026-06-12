@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/cabecalho.dart';
 import 'package:flutter_application_1/widget/custom_sidebar_button.dart';
 import 'package:flutter_application_1/widget/button.dart';
-import 'modExcel-layout/limparHTML-layout.dart';
+import 'package:flutter_application_1/popup/limpar_html_popup.dart';
+import 'package:flutter_application_1/popup/unir_html_popup.dart';
 
 class ModExcel extends StatefulWidget {
   const ModExcel({super.key});
@@ -153,7 +154,7 @@ class _ModExcelState extends State<ModExcel> {
                                     onPressed: () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) => const ModExcelLayout(),
+                                        builder: (context) => const LimparHTML(),
                                       );
                                     },
                                   ),
@@ -162,17 +163,18 @@ class _ModExcelState extends State<ModExcel> {
 
                                   Button(
                                     titulo: 'Unir Planilhas',
+                                    onPressed: () => showDialog(
+                                      context: context,
+                                      builder: (context) => const UnirHTML(),
+                                    ),
                                   ),
                                 ],
                               )
-
-
                             ],
                           )
                         )
                       )
                     )
-
                   ],
                 ),
               )
