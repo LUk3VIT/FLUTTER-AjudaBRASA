@@ -59,11 +59,11 @@ class _ModExcelLayoutState extends State<LimparHTML> {
       _isUploading = true;
     });
 
-    final result = await HttpUploadService().uploadXlsxFile(
-      'https://seu-site.com/limpar-html',
-      _selectedFileName!,
-      _selectedFileBytes!,
-    );
+      final result = await HttpUploadService().cleanAndDownloadXlsxFile(
+        'http://192.168.0.227:3000/api/planilha/formatar',
+        _selectedFileName!,
+        _selectedFileBytes!,
+      );
 
     setState(() {
       _isUploading = false;
