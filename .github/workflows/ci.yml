@@ -20,8 +20,11 @@ jobs:
           channel: 'stable'
           cache: true
       - run: flutter pub get
+        working-directory: flutter_application_1
       - run: dart format --output=none --set-exit-if-changed .
+        working-directory: flutter_application_1
       - run: flutter analyze
+        working-directory: flutter_application_1
 
   test:
     runs-on: ubuntu-latest
@@ -32,7 +35,9 @@ jobs:
           channel: 'stable'
           cache: true
       - run: flutter pub get
+        working-directory: flutter_application_1
       - run: flutter test --concurrency=4
+        working-directory: flutter_application_1
 
   build-and-push-docker:
     needs: [analyze, test] 
@@ -68,7 +73,6 @@ jobs:
           context: ./flutter_application_1
           file: ./flutter_application_1/Dockerfile
           push: true
-          # Substitua 'seu-usuario-docker' pelo seu nome de usuário real ou use a variável
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/flutter-ajudabrasa:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/flutter-ajudabrasa:${{ github.sha }}
