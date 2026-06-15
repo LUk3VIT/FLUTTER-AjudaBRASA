@@ -19,12 +19,9 @@ class Cabecalho extends StatelessWidget {
         },
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
-          child: Text(
-            'Ajuda - Brasa | $nome',
-            style: TextStyle(fontSize: 16),
-          ),
-        )
-      )
+          child: Text('Ajuda - Brasa | $nome', style: TextStyle(fontSize: 16)),
+        ),
+      ),
     );
   }
 }

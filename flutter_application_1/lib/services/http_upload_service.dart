@@ -13,16 +13,11 @@ class HttpUploadResult {
     this.fileBytes,
   });
 
-  factory HttpUploadResult.success(String message, {Uint8List? fileBytes}) => HttpUploadResult(
-        success: true,
-        message: message,
-        fileBytes: fileBytes,
-      );
+  factory HttpUploadResult.success(String message, {Uint8List? fileBytes}) =>
+      HttpUploadResult(success: true, message: message, fileBytes: fileBytes);
 
-  factory HttpUploadResult.failure(String message) => HttpUploadResult(
-        success: false,
-        message: message,
-      );
+  factory HttpUploadResult.failure(String message) =>
+      HttpUploadResult(success: false, message: message);
 }
 
 class HttpUploadService {
@@ -36,26 +31,25 @@ class HttpUploadService {
     Uint8List fileBytes,
   ) async {
     final formData = FormData.fromMap({
-      'planilha': MultipartFile.fromBytes(
-        fileBytes,
-        filename: fileName,
-      ),
+      'planilha': MultipartFile.fromBytes(fileBytes, filename: fileName),
     });
 
     try {
       final response = await _dio.post(
         uploadUrl,
         data: formData,
-        options: Options(
-          headers: {'Content-Type': 'multipart/form-data'},
-        ),
+        options: Options(headers: {'Content-Type': 'multipart/form-data'}),
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return HttpUploadResult.success('Arquivo enviado para limpeza com sucesso!');
+        return HttpUploadResult.success(
+          'Arquivo enviado para limpeza com sucesso!',
+        );
       }
 
-      return HttpUploadResult.failure('Falha ao enviar para limpeza: ${response.statusCode}');
+      return HttpUploadResult.failure(
+        'Falha ao enviar para limpeza: ${response.statusCode}',
+      );
     } catch (e) {
       return HttpUploadResult.failure('Erro ao enviar para API: $e');
     }
@@ -69,13 +63,10 @@ class HttpUploadService {
   ) async {
     // Normaliza uploadUrl: adiciona esquema http:// se ausente
     if (!uploadUrl.startsWith(RegExp(r'https?://'))) {
-      uploadUrl = 'http://' + uploadUrl;
+      uploadUrl = 'http://$uploadUrl';
     }
     final formData = FormData.fromMap({
-      'planilha': MultipartFile.fromBytes(
-        fileBytes,
-        filename: fileName,
-      ),
+      'planilha': MultipartFile.fromBytes(fileBytes, filename: fileName),
     });
 
     try {
@@ -91,18 +82,22 @@ class HttpUploadService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         // Em web a resposta pode ser List<int>
         final data = response.data;
-        final Uint8List processedBytes = data is Uint8List ? data : Uint8List.fromList(List<int>.from(data));
-        
+        final Uint8List processedBytes = data is Uint8List
+            ? data
+            : Uint8List.fromList(List<int>.from(data));
+
         // Faz o download automático no navegador
         _downloadFileInBrowser(processedBytes, fileName);
-        
+
         return HttpUploadResult.success(
           'Arquivo processado com sucesso! Download iniciado.',
           fileBytes: processedBytes,
         );
       }
 
-      return HttpUploadResult.failure('Falha ao processar arquivo: ${response.statusCode}');
+      return HttpUploadResult.failure(
+        'Falha ao processar arquivo: ${response.statusCode}',
+      );
     } on DioException catch (e) {
       // Mensagens mais descritivas para problemas de rede/CORS
       final type = e.type;
@@ -120,7 +115,5 @@ class HttpUploadService {
     html.AnchorElement(href: url)
       ..setAttribute('download', fileName)
       ..click();
-    
-    html.Url.revokeObjectUrl(url);
   }
 }

@@ -17,26 +17,24 @@ class FileSelectionResult {
   });
 
   factory FileSelectionResult.cancelled() => FileSelectionResult(
-        success: false,
-        message: 'Seleção cancelada.',
-        cancelled: true,
-      );
+    success: false,
+    message: 'Seleção cancelada.',
+    cancelled: true,
+  );
 
-  factory FileSelectionResult.failure(String message) => FileSelectionResult(
-        success: false,
-        message: message,
-      );
+  factory FileSelectionResult.failure(String message) =>
+      FileSelectionResult(success: false, message: message);
 
   factory FileSelectionResult.success(
     String message, {
     required String fileName,
     required Uint8List fileBytes,
   }) => FileSelectionResult(
-        success: true,
-        message: message,
-        fileName: fileName,
-        fileBytes: fileBytes,
-      );
+    success: true,
+    message: message,
+    fileName: fileName,
+    fileBytes: fileBytes,
+  );
 }
 
 class FileUploadService {
@@ -55,7 +53,9 @@ class FileUploadService {
     final fileBytes = file.bytes;
 
     if (fileBytes == null) {
-      return FileSelectionResult.failure('Não foi possível ler o arquivo selecionado.');
+      return FileSelectionResult.failure(
+        'Não foi possível ler o arquivo selecionado.',
+      );
     }
 
     return FileSelectionResult.success(
