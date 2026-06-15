@@ -47,7 +47,7 @@ jobs:
           cache: true
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: cd flutter_application_1 && flutter pub get
 
       - name: Build Flutter Web
         run: flutter build web --release
