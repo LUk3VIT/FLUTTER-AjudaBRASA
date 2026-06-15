@@ -110,7 +110,7 @@ class _ModExcelState extends State<ModExcel> {
 
             Expanded(
               child: Container(
-                color: const Color(0xFFFEAE8D2),
+                color: const Color(0xFFEAE8D2),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

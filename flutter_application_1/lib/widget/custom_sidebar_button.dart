@@ -20,7 +20,7 @@ class CustomSidebarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color activeColor = const Color(0xFFFEAE8D2); 
+    final Color activeColor = const Color(0xFFEAE8D2); 
 
     return GestureDetector(
       onTap: onTap,

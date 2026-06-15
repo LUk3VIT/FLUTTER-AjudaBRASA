@@ -103,11 +103,11 @@ class HttpUploadService {
       }
 
       return HttpUploadResult.failure('Falha ao processar arquivo: ${response.statusCode}');
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // Mensagens mais descritivas para problemas de rede/CORS
       final type = e.type;
       final message = e.message;
-      return HttpUploadResult.failure('DioException [${type}]: ${message}');
+      return HttpUploadResult.failure('DioException [$type]: $message');
     } catch (e) {
       return HttpUploadResult.failure('Erro ao processar arquivo: $e');
     }
@@ -117,7 +117,7 @@ class HttpUploadService {
   void _downloadFileInBrowser(Uint8List fileBytes, String fileName) {
     final blob = html.Blob([fileBytes]);
     final url = html.Url.createObjectUrlFromBlob(blob);
-    final anchor = html.AnchorElement(href: url)
+    html.AnchorElement(href: url)
       ..setAttribute('download', fileName)
       ..click();
     
