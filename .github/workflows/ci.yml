@@ -65,8 +65,8 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./flutter_application_1
+          file: ./flutter_application_1/Dockerfile
           push: true
           # Substitua 'seu-usuario-docker' pelo seu nome de usuário real ou use a variável
           tags: |
