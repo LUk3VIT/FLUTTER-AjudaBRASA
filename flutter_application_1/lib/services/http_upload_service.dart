@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:dio/dio.dart';
-import 'dart:html' as html;
+import 'auxiliares/download_file.dart';
 
 class HttpUploadResult {
   final bool success;
@@ -55,13 +55,11 @@ class HttpUploadService {
     }
   }
 
-  /// Envia arquivo para API e faz download automático do arquivo processado
   Future<HttpUploadResult> cleanAndDownloadXlsxFile(
     String uploadUrl,
     String fileName,
     Uint8List fileBytes,
   ) async {
-    // Normaliza uploadUrl: adiciona esquema http:// se ausente
     if (!uploadUrl.startsWith(RegExp(r'https?://'))) {
       uploadUrl = 'http://$uploadUrl';
     }
@@ -86,11 +84,10 @@ class HttpUploadService {
             ? data
             : Uint8List.fromList(List<int>.from(data));
 
-        // Faz o download automático no navegador
-        _downloadFileInBrowser(processedBytes, fileName);
+        final saveMessage = await saveFile(processedBytes, fileName);
 
         return HttpUploadResult.success(
-          'Arquivo processado com sucesso! Download iniciado.',
+          'Arquivo processado com sucesso! $saveMessage',
           fileBytes: processedBytes,
         );
       }
@@ -108,12 +105,4 @@ class HttpUploadService {
     }
   }
 
-  /// Faz download do arquivo no navegador
-  void _downloadFileInBrowser(Uint8List fileBytes, String fileName) {
-    final blob = html.Blob([fileBytes]);
-    final url = html.Url.createObjectUrlFromBlob(blob);
-    html.AnchorElement(href: url)
-      ..setAttribute('download', fileName)
-      ..click();
-  }
 }
