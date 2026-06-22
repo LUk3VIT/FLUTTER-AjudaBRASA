@@ -15,18 +15,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
+
       - run: flutter pub get
         working-directory: flutter_application_1
+
       - run: flutter analyze
         working-directory: flutter_application_1
         
   build-and-push-docker:
     needs: [analyze] 
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -61,3 +65,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/flutter-ajudabrasa:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/flutter-ajudabrasa:${{ github.sha }}
+        
