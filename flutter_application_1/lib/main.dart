@@ -33,7 +33,7 @@ class _MainAppState extends State<MainApp> {
  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
+      backgroundColor: Color(0xFFFFFFFF),
       body: Row(
         children: [
           AnimatedContainer(
