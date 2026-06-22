@@ -20,7 +20,6 @@ class _ButtonState extends State<Button> {
       height: 50,
 
       child: TextButton(
-
         onPressed: () {
           setState(() {
             _isActive = !_isActive;
@@ -30,7 +29,9 @@ class _ButtonState extends State<Button> {
 
         style: TextButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: _isActive ? const Color(0xFF00FF00) : const Color(0xFFADFF2F),
+          backgroundColor: _isActive
+              ? const Color(0xFF00FF00)
+              : const Color(0xFFADFF2F),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -43,7 +44,6 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w500,
           ),
         ),
-
       ),
     );
   }

@@ -11,7 +11,9 @@ class LimparHTML extends StatefulWidget {
 }
 
 class _ModExcelLayoutState extends State<LimparHTML> {
-  final TextEditingController _fileController = TextEditingController(text: 'Nenhum arquivo selecionado');
+  final TextEditingController _fileController = TextEditingController(
+    text: 'Nenhum arquivo selecionado',
+  );
   String? _selectedFileName;
   Uint8List? _selectedFileBytes;
   bool _isUploading = false;
@@ -59,11 +61,11 @@ class _ModExcelLayoutState extends State<LimparHTML> {
       _isUploading = true;
     });
 
-      final result = await HttpUploadService().cleanAndDownloadXlsxFile(
-        'http://192.168.0.227:3000/api/planilha/formatar',
-        _selectedFileName!,
-        _selectedFileBytes!,
-      );
+    final result = await HttpUploadService().cleanAndDownloadXlsxFile(
+      'http://192.168.0.227:3000/api/planilha/formatar',
+      _selectedFileName!,
+      _selectedFileBytes!,
+    );
 
     setState(() {
       _isUploading = false;
@@ -74,15 +76,12 @@ class _ModExcelLayoutState extends State<LimparHTML> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-
       title: const Text('Limpar HTML'),
       content: SizedBox(
         width: 500,
         child: Column(
-          
           mainAxisSize: MainAxisSize.min,
           children: [
-
             const Text(
               'Escolha o arquivo para limpar HTML',
               style: TextStyle(fontSize: 16),
@@ -123,7 +122,9 @@ class _ModExcelLayoutState extends State<LimparHTML> {
               Text(
                 _statusMessage!,
                 style: TextStyle(
-                  color: _statusMessage!.contains('sucesso') ? Colors.green : Colors.red,
+                  color: _statusMessage!.contains('sucesso')
+                      ? Colors.green
+                      : Colors.red,
                 ),
               ),
             ],
@@ -136,7 +137,7 @@ class _ModExcelLayoutState extends State<LimparHTML> {
           onPressed: () => Navigator.pop(context),
           child: const Text('Cancelar'),
         ),
-        
+
         ElevatedButton(
           onPressed: _isUploading ? null : _cleanSelectedFile,
           child: _isUploading

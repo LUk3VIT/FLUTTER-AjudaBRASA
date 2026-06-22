@@ -20,7 +20,7 @@ class CustomSidebarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color activeColor = const Color(0xFFFEAE8D2); 
+    final Color activeColor = const Color(0xFFEAE8D2);
 
     return GestureDetector(
       onTap: onTap,
@@ -53,18 +53,19 @@ class CustomSidebarButton extends StatelessWidget {
                 )
               : BorderRadius.circular(30),
           child: Stack(
-            alignment: isLogout && !isCollapsed ? Alignment.center : Alignment.centerLeft,
+            alignment: isLogout && !isCollapsed
+                ? Alignment.center
+                : Alignment.centerLeft,
             children: [
-              
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
                 left: isCollapsed ? 15 : (isLogout ? 50 : 20),
-                top: isCollapsed ? 13 : -40, 
+                top: isCollapsed ? 13 : -40,
                 child: Icon(
                   icon,
-                  color: isLogout 
-                      ? Colors.redAccent 
+                  color: isLogout
+                      ? Colors.redAccent
                       : (isActive ? Colors.black87 : Colors.white),
                   size: 24,
                 ),
@@ -83,8 +84,8 @@ class CustomSidebarButton extends StatelessWidget {
                     titulo,
                     textAlign: isLogout ? TextAlign.center : TextAlign.start,
                     style: TextStyle(
-                      color: isLogout 
-                          ? Colors.redAccent 
+                      color: isLogout
+                          ? Colors.redAccent
                           : (isActive ? Colors.black87 : Colors.white),
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
