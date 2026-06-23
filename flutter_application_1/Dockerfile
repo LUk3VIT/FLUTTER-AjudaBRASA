@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 COPY ./build/web /usr/share/nginx/html
 
-RUN flutter build web --release --verbose
+RUN flutter build web --verbose
 
 EXPOSE 80
 
