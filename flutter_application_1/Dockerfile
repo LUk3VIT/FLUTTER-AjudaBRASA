@@ -1,6 +1,8 @@
 FROM nginx:alpine
 
-COPY build/web /usr/share/nginx/html
+COPY ./build/web /usr/share/nginx/html
+
+RUN flutter build web --release --verbose
 
 EXPOSE 80
 
