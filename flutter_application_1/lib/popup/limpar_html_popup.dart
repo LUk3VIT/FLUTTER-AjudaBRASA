@@ -62,7 +62,7 @@ class _ModExcelLayoutState extends State<LimparHTML> {
     });
 
     final result = await HttpUploadService().cleanAndDownloadXlsxFile(
-      'http://192.168.0.227:3000/api/planilha/formatar',
+      'http://192.168.0.210:3000/api/planilha/formatar',
       _selectedFileName!,
       _selectedFileBytes!,
     );
@@ -123,8 +123,8 @@ class _ModExcelLayoutState extends State<LimparHTML> {
                 _statusMessage!,
                 style: TextStyle(
                   color: _statusMessage!.contains('sucesso')
-                      ? Colors.green
-                      : Colors.red,
+                    ? Colors.green
+                    : Colors.red,
                 ),
               ),
             ],
@@ -141,15 +141,15 @@ class _ModExcelLayoutState extends State<LimparHTML> {
         ElevatedButton(
           onPressed: _isUploading ? null : _cleanSelectedFile,
           child: _isUploading
-              ? const SizedBox(
-                  height: 18,
-                  width: 18,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: Colors.white,
-                  ),
-                )
-              : const Text('Limpar'),
+            ? const SizedBox(
+              height: 18,
+              width: 18,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: Colors.white,
+              ),
+            )
+          : const Text('Limpar'),
         ),
       ],
     );
