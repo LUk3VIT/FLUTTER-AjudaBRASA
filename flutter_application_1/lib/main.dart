@@ -72,7 +72,7 @@ class _MainAppState extends State<MainApp> {
 
                   if (!_isCollapsed) ...[
                     const Text(
-                      'Lucas Dias',
+                      'Danilo',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -81,7 +81,7 @@ class _MainAppState extends State<MainApp> {
                     ),
 
                     const Text(
-                      'info@braseq.com.br',
+                      'marketing@braseq.com.br',
                       style: TextStyle(
                       color: Colors.white70,
                       ),
@@ -101,22 +101,22 @@ class _MainAppState extends State<MainApp> {
 
                   const SizedBox(height: 10),
 
-                  CustomSidebarButton(
-                    titulo: 'Equipamentos',
-                    icon: Icons.table_chart, 
-                    isCollapsed: _isCollapsed,
-                    onTap: () {},
-                  ),
+                  //CustomSidebarButton(
+                  //  titulo: 'Equipamentos',
+                  //  icon: Icons.table_chart, 
+                  //  isCollapsed: _isCollapsed,
+                  //  onTap: () {},
+                  //),
 
                   const Spacer(),
 
-                  CustomSidebarButton(
-                    titulo: 'Logout',
-                    icon: Icons.logout,
-                    isCollapsed: _isCollapsed,
-                    isLogout: true,
-                    onTap: () {},
-                  ),
+                  //CustomSidebarButton(
+                  //  titulo: 'Logout',
+                  //  icon: Icons.logout,
+                  //  isCollapsed: _isCollapsed,
+                  //  isLogout: true,
+                  //  onTap: () {},
+                  //),
 
                   const SizedBox(height: 15),
 

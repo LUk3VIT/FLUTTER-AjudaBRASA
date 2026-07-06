@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/widget/cabecalho.dart';
 import 'package:flutter_application_1/widget/custom_sidebar_button.dart';
 import 'package:flutter_application_1/widget/button.dart';
@@ -43,66 +44,67 @@ class _ModExcelState extends State<ModExcel> {
                 const SizedBox(height: 20),
 
                 AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  width: _isCollapsed ? 45 : 80,
-                  height: _isCollapsed ? 45 : 80,
-                  child: const CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(
-                      'https://avatars.githubusercontent.com/u/12345678?v=4',
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 10),
-
-                if (!_isCollapsed) ...[
-                  const Text(
-                    'Lucas Dias',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    width: _isCollapsed ? 45 : 80,
+                    height: _isCollapsed ? 45 : 80,
+                    child: const CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage('https://avatars.githubusercontent.com/u/12345678?v=4'),
                     ),
                   ),
 
-                  const Text(
-                    'info@braseq.com.br',
-                    style: TextStyle(color: Colors.white70),
+                  const SizedBox(height: 10),
+
+                  if (!_isCollapsed) ...[
+                    const Text(
+                      'Danilo',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const Text(
+                      'marketing@braseq.com.br',
+                      style: TextStyle(
+                      color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                  
+                  const SizedBox(height: 30),
+
+                  CustomSidebarButton(
+                    titulo: 'Modificação Excel',
+                    icon: Icons.settings, 
+                    isCollapsed: _isCollapsed,
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, Routes.modExcel);
+                    },
                   ),
-                ],
-
-                const SizedBox(height: 30),
-
-                CustomSidebarButton(
-                  titulo: 'Modificação Excel',
-                  icon: Icons.settings,
-                  isCollapsed: _isCollapsed,
-                  isActive: true,
-                  onTap: () {},
-                ),
 
                 const SizedBox(height: 10),
 
-                CustomSidebarButton(
-                  titulo: 'Equipamentos',
-                  icon: Icons.table_chart,
-                  isCollapsed: _isCollapsed,
-                  onTap: () {},
-                ),
+                  //CustomSidebarButton(
+                  //  titulo: 'Equipamentos',
+                  //  icon: Icons.table_chart, 
+                  //  isCollapsed: _isCollapsed,
+                  //  onTap: () {},
+                  //),
 
-                const Spacer(),
+                  const Spacer(),
 
-                CustomSidebarButton(
-                  titulo: 'Logout',
-                  icon: Icons.logout,
-                  isCollapsed: _isCollapsed,
-                  isLogout: true,
-                  onTap: () {},
-                ),
+                  //CustomSidebarButton(
+                  //  titulo: 'Logout',
+                  //  icon: Icons.logout,
+                  //  isCollapsed: _isCollapsed,
+                  //  isLogout: true,
+                  //  onTap: () {},
+                  //),
 
-                const SizedBox(height: 15),
+                  const SizedBox(height: 15),
               ],
             ),
           ),
@@ -113,7 +115,7 @@ class _ModExcelState extends State<ModExcel> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Cabecalho(nome: 'Lucas Dias'),
+                  Cabecalho(nome: 'Danilo'),
 
                   Expanded(
                     child: Container(

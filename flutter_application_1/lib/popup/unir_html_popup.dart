@@ -173,7 +173,7 @@ class _ModExcelLayoutState extends State<UnirHTML> {
                       width: 200,
                       child: TextField(
                         readOnly: false,
-                        controller: ,
+                        controller: _compareFileController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.attach_file),
@@ -196,22 +196,21 @@ class _ModExcelLayoutState extends State<UnirHTML> {
                       )
                       : const Text('Selecionar Arquivo'),
                     ),
-
-                    if (_statusMessage != null) ...[
-                      const SizedBox(height: 16),
-                      Text(
-                        _statusMessage!,
-                        style: TextStyle(
-                          color: _statusMessage!.contains('sucesso')
-                            ? Colors.green
-                            : Colors.red,
-                        ),
-                      )
-                    ]
                   ],
                 ),
               ],
             ),
+            if (_statusMessage != null) ...[
+              const SizedBox(height: 16),
+              Text(
+                _statusMessage!,
+                style: TextStyle(
+                color: _statusMessage!.contains('sucesso')
+                    ? Colors.green
+                    : Colors.red,
+                ),
+              )
+            ]
           ],
         ),
       ),
@@ -233,7 +232,7 @@ class _ModExcelLayoutState extends State<UnirHTML> {
                 color: Colors.white,
               )
             )
-          :const Text('Limar')
+          :const Text('Unir')
         ),
       ],
     );

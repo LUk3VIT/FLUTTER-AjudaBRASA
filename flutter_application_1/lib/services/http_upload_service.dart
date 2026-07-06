@@ -105,8 +105,8 @@ class HttpUploadService {
     }
 
     final formData = FormData.fromMap({
-      'base': MultipartFile.fromBytes(baseBytes, filename: baseName),
-      'comparacao': MultipartFile.fromBytes(compareBytes, filename: compareName),
+      'planilha1': MultipartFile.fromBytes(baseBytes, filename: baseName),
+      'planilha2': MultipartFile.fromBytes(compareBytes, filename: compareName),
     });
 
     try{
