@@ -84,7 +84,7 @@ class _ModExcelLayoutState extends State<UnirHTML> {
       _isUploading = true;
     });
 
-    final result = await HttpUploadService().MergeAndDownloadXlsxFile(
+    final result = await HttpUploadService().mergeAndDownloadXlsxFile(
       'http://192.168.0.210:3000/api/planilha/unir',
       _baseFileName!,
       _baseFileBytes!,

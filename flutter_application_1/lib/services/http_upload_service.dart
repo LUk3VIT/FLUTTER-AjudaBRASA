@@ -25,7 +25,7 @@ class HttpUploadService {
 
   HttpUploadService([Dio? dio]) : _dio = dio ?? Dio();
 
-  /** 
+  /* 
   Future<HttpUploadResult> uploadXlsxFile(String uploadUrl, String fileName, Uint8List fileBytes,) async {
     final formData = FormData.fromMap({
       'planilha': MultipartFile.fromBytes(fileBytes, filename: fileName),
@@ -99,7 +99,7 @@ class HttpUploadService {
     }
   }
 
-  Future<HttpUploadResult> MergeAndDownloadXlsxFile(String uploadUrl, String baseName, Uint8List baseBytes, String compareName, Uint8List compareBytes) async {
+  Future<HttpUploadResult> mergeAndDownloadXlsxFile(String uploadUrl, String baseName, Uint8List baseBytes, String compareName, Uint8List compareBytes) async {
     if (!uploadUrl.startsWith(RegExp(r'https?://'))){
       uploadUrl = 'http://$uploadUrl';
     }
